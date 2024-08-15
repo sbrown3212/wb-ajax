@@ -3,7 +3,16 @@ import axios from 'axios';
 // PART 1: Show Dog Photo
 
 function showDogPhoto(evt) {
-  // TODO: get a random photo from the Dog API and show it in the #dog-image div
+  // Axios.get to get data from dog API
+  axios.get('https://dog.ceo/api/breeds/image/random')
+    .then((response) => {
+      // Save url to message variable
+      const { message } = response.data;
+
+      // Add img tag string with src as url from dog API to '#dog-image' div
+      document.querySelector('#dog-image').innerHTML = `<img src="${message}">`;
+    })
+
 }
 
 document.querySelector('#get-dog-image').addEventListener('click', showDogPhoto);

@@ -23,6 +23,11 @@ function showWeather(evt) {
   const zipcode = document.querySelector('#zipcode-field').value;
 
   // TODO: request weather with that URL and show the forecast in #weather-info
+  axios.get(`/weather.txt?zipcode=${zipcode}`)
+  .then((response) => {
+    const forecast = response.data;
+    document.querySelector('#weather-info').innerText = forecast;
+  })
 }
 
 document.querySelector('#weather-button').addEventListener('click', showWeather);

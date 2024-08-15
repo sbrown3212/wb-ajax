@@ -22,9 +22,12 @@ app.get('/', (req, res) => {
   res.sendFile('index.html', { root: '.' });
 });
 
+// 5. app.get for /weather.txt route
 app.get('/weather.txt', (req, res) => {
+  // 6. save request zipcode data to zipcode variable
   const zipcode = req.query.zipcode;
-  
+
+  // 7. If zipcode is found in server (WEATHER object), send back forecast, otherwise send default forecast
   if (zipcode in WEATHER) {
     res.send(WEATHER[zipcode].forecast);
   } else {
